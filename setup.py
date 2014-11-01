@@ -34,7 +34,7 @@ setuptools.setup(
     classifiers=[
         'Development Status :: 1 - Planning',
         'Natural Language :: English',
-        'Operating System :: OS Independent',
+        'Operating System :: GNU/Linux',
         'Programming Language :: Python :: 2.7',
     ],
 
