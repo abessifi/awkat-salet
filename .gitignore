@@ -1,0 +1,23 @@
+# Temporary Python files
+*.pyc
+*.egg-info
+__pycache__
+
+# Temporary virtualenv files
+.cache
+env
+
+# Generated documentation
+docs/gen
+apidocs
+docs/*.html
+*.rst
+docs/*.png
+
+# Testing and coverage results
+.coverage
+pyunit.xml
+
+# Build and release directories
+build
+dist
