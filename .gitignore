@@ -1,5 +1,6 @@
 # Temporary Python files
 *.pyc
+*.swp
 *.egg-info
 __pycache__
 
