@@ -3,6 +3,7 @@ import requests
 from ConfigParser import ConfigParser
 
 class ConfigFileNotFound(Exception): pass
+class APIUrlNotDefined(Exception): pass
 
 def get_config_parser(path=''):
     """Locate the application config file
@@ -45,11 +46,14 @@ def get_country_name(local=False, geo_ip_url=''):
             print("[ERROR] '%s' not found !" % timezone_file)
             return country
     # Else, get country name from an GeoIP API.
+    if not geo_ip_url: raise APIUrlNotDefined("GeoIP API URL not defined.")
     try:
         response = requests.get(geo_ip_url)
         country = response.json()['timezone'].split('/')[1].lower()
     except requests.HTTPError:
-        print("[ERROR] Please check the API url !")
+        print("[ERROR] Please check the API url.")
     except requests.ConnectionError:
-        print("[ERROR] Connection aborted. Please make sure you're connect !")
+        print("[ERROR] Connection aborted. Please make sure you're connect.")
+    except Exception as e:
+        print("[ERROR] Unexpected error ! %s" % e)
     return country
